@@ -214,7 +214,7 @@ function pantallaDiagnostico() {
            </li>`;
          }).join('')}
        </ul>`
-    : `<p class="receta-vacia">No hay nada que recetarte, ${escapar(primerNombre())}. Tu operación ya cuenta con todas las soluciones que revisamos.</p>`;
+    : `<p class="receta-vacia">No encontramos nada que le haga falta a tu operación, ${escapar(primerNombre())}. Ya cuentas con todas las soluciones que revisamos.</p>`;
 
   const cubierto = tiene.length
     ? `<h2 class="cubierto-titulo">Lo que ya tienes cubierto</h2>
@@ -229,7 +229,7 @@ function pantallaDiagnostico() {
         <img class="barra-logo" src="${IMG.logo}" alt="Dropi">
       </div>
       <div class="diag-hero anima-entrada">
-        <p class="diag-intro">${escapar(primerNombre())}, este es tu diagnóstico</p>
+        <p class="diag-intro">${escapar(primerNombre())}, así está tu operación</p>
         <h1 class="diag-estado">${escapar(nivel.titulo)}</h1>
         <p class="diag-resumen">${conNegrillas(nivel.texto)}</p>
         <img class="diag-codi" src="${nivel.codi}" alt="">
@@ -239,8 +239,7 @@ function pantallaDiagnostico() {
 
       <div class="hoja hoja-receta">
         <div class="receta-cabecera">
-          <span class="receta-rx" aria-hidden="true">℞</span>
-          <h2 class="receta-titulo">Tu receta</h2>
+          <h2 class="receta-titulo">Tu diagnóstico</h2>
         </div>
         ${receta}
         ${cubierto}

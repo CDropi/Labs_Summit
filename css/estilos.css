@@ -408,7 +408,7 @@ strong{font-weight:700;}
   font-family:var(--titulo);
   font-weight:700;
   font-size:50px;
-  line-height:.95;
+  line-height:1.1;
   letter-spacing:.01em;
 }
 .diag-resumen{
