@@ -74,11 +74,11 @@ const PREGUNTAS = [
 const ESTADOS = [
   { porcentaje: 100, titulo: 'Operación Winner', codi: 'media/Codi_Academy_Gana.webp',
     texto: 'Tu operación está en plena forma. Tienes cubiertas todas las áreas que revisamos.' },
-  { porcentaje: 70, titulo: 'Buena salud', codi: 'media/Codi_Academy_Celebra.webp',
+  { porcentaje: 70, titulo: 'Buena salud', codi: 'media/Codi_Bien.webp', // antes: Codi_Academy_Celebra.webp
     texto: 'Vas por buen camino. Con unos ajustes puntuales tu negocio puede escalar con más fuerza.' },
-  { porcentaje: 40, titulo: 'Necesita tratamiento', codi: 'media/Codi_Academy_Busca.webp',
+  { porcentaje: 40, titulo: 'Necesita tratamiento', codi: 'media/Codi_Tratamiento.webp', // antes: Codi_Academy_Busca.webp
     texto: 'Tu operación funciona, pero hay áreas que te están quitando ventas y rentabilidad.' },
-  { porcentaje: 0, titulo: 'Atención prioritaria', codi: 'media/Codi_Academy_Triste.webp',
+  { porcentaje: 0, titulo: 'Atención prioritaria', codi: 'media/Codi_Preocupado.webp', // antes: Codi_Academy_Triste.webp
     texto: 'Hay varias áreas sin cubrir. La buena noticia: cada una tiene solución dentro de Dropi.' },
 ];
 
@@ -88,9 +88,11 @@ const TEXTOS = {
 
 const IMG = {
   logo: 'media/Logo-Dropi.svg',
-  codiNombre: 'media/Codi_Academy_Sentado.webp',
-  codiInicio: 'media/Codi_Academy_Quimica.webp',
-  codiPregunta: 'media/Codi_Academy_Busca.webp',
+  codiNombre: 'media/Codi_Examinando.webp',
+  // codiInicio: 'media/Codi_Academy_Quimica.webp',
+  codiInicio: 'media/Codi_Doctor.webp',
+  // codiPregunta: 'media/Codi_Academy_Busca.webp',
+  codiPregunta: 'media/Codi_Diagnostico.webp',
   codiAnalizando: 'media/Codi_Academy_Quimica.webp',
   atras: 'media/Atras.svg',
 };

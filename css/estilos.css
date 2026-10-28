@@ -246,7 +246,14 @@ strong{font-weight:700;}
 .inicio-codi{
   display:block;
   width:auto;
-  max-height:min(32vh,260px);
+  /* max-height:min(32vh,260px); */
+  /* Codi ocupa todo el espacio libre entre el texto y el botón, hasta
+     400px. En pantallas bajas se encoge en vez de empujar el botón. */
+  flex:1 1 0;
+  min-height:140px;
+  max-height:400px;
+  max-width:100%;
+  object-fit:contain;
   margin:auto 0;
   padding:16px 0;
 }
