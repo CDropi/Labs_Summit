@@ -1,15 +1,4 @@
-/* ============================================================
-   Diagnóstico Dropi
-   Basado en la actividad de Academy de la app de Expo Winners:
-   mismo naranja con damero, hoja blanca, Codi, barra verde con
-   medalla y botón píldora oscuro. Sin base de datos: todo vive en
-   memoria y se pierde al recargar.
-
-   Archivo: css/estilos.css
-   ============================================================ */
-
-/* Tusker y los dos pesos propios de Montserrat (Light y Bold) van
-   embebidos; 500/600/800 llegan de Google Fonts. */
+/* Tusker y los dos pesos propios de Montserrat (Light y Bold)*/
 @font-face{font-family:'Tusker';src:url('../fonts/TuskerGrotesk-4700Bold.woff2') format('woff2');font-weight:700;font-style:normal;font-display:swap;}
 @font-face{font-family:'Montserrat';src:url('../fonts/Montserrat-Light.woff2') format('woff2');font-weight:300;font-style:normal;font-display:swap;}
 @font-face{font-family:'Montserrat';src:url('../fonts/Montserrat-Bold.woff2') format('woff2');font-weight:700;font-style:normal;font-display:swap;}
@@ -30,6 +19,7 @@
   --titulo:'Tusker','Arial Narrow','Helvetica Neue',Impact,sans-serif;
   color-scheme:light;
 }
+
 @media (prefers-color-scheme: dark){
   :root:not([data-theme="light"]){
     --hoja:#1c1c1e;
@@ -42,6 +32,7 @@
     color-scheme:dark;
   }
 }
+
 :root[data-theme="dark"]{
   --hoja:#1c1c1e;
   --texto-hoja:#f2f2f2;
@@ -54,19 +45,21 @@
 }
 
 *{box-sizing:border-box;}
+
 :root{
   box-sizing:border-box;
   padding-top:env(safe-area-inset-top,0px);
   padding-bottom:env(safe-area-inset-bottom,0px);
 }
+
 html{height:100%;scroll-padding-top:env(safe-area-inset-top,0px);background:var(--naranja);}
+
 body{
   height:100%;
   margin:0;
   font-family:var(--fuente);
   font-weight:300;
   color:#fff;
-  /* Damero casi imperceptible, igual que en Academy. */
   background-color:var(--naranja);
   background-image:conic-gradient(from 0deg at 50% 50%,
     rgba(255,255,255,.022) 0 25%, transparent 0 50%,
@@ -74,10 +67,15 @@ body{
   background-size:68px 68px;
   -webkit-font-smoothing:antialiased;
 }
+
 img{max-width:100%;}
+
 button{font-family:inherit;}
+
 strong{font-weight:700;}
+
 :focus-visible{outline:3px solid #fff;outline-offset:3px;}
+
 .hoja :focus-visible{outline-color:var(--naranja);}
 
 /* Columna de celular: en pantallas grandes la app queda centrada con el
@@ -89,6 +87,7 @@ strong{font-weight:700;}
   display:flex;
   flex-direction:column;
 }
+
 .pantalla{
   flex:1;
   min-height:0;
@@ -109,7 +108,9 @@ strong{font-weight:700;}
   gap:12px;
   flex-shrink:0;
 }
+
 .barra-logo{display:block;width:104px;height:auto;margin-top:4px;}
+
 .btn-circulo{
   flex-shrink:0;
   width:40px;height:40px;
@@ -123,14 +124,16 @@ strong{font-weight:700;}
   backdrop-filter:blur(6px) saturate(140%);
   box-shadow:inset 0 1px 1px rgba(255,255,255,.25),inset 0 -1px 4px rgba(0,0,0,.15);
 }
+
 .btn-circulo img{width:17px;height:17px;}
+
 .btn-circulo:hover{background:linear-gradient(135deg,rgba(255,255,255,.36),rgba(255,255,255,.1));}
 
-/* ---- Botón píldora oscuro de Academy ---- */
+/* ---- Botón píldora oscuro ---- */
 .btn-pildora{
   flex-shrink:0;
-  min-width:200px;
-  padding:15px 34px;
+  min-width:150px;
+  padding:8px 34px;
   border-radius:999px;
   border:none;
   background:var(--pildora);
@@ -140,46 +143,65 @@ strong{font-weight:700;}
   letter-spacing:.02em;
   cursor:pointer;
   -webkit-tap-highlight-color:transparent;
-  box-shadow:0 8px 22px rgba(0,0,0,.28);
   transition:background .15s ease, transform .15s ease;
+  text-transform: uppercase;
 }
+
 .btn-pildora:hover{background:var(--pildora-hover);}
+
 .btn-pildora:active{transform:scale(.98);}
 
 /* ============ Pantalla 1: nombre ============ */
-.badge{display:block;width:170px;height:auto;margin:22px auto 0;}
-.nombre-titulo{
-  margin:26px 0 0;
-  font-family:var(--titulo);
-  font-weight:700;
-  font-size:46px;
-  line-height:.95;
-  text-align:center;
-  letter-spacing:.01em;
+/* Todo el contenido va en .nombre-grupo, que se centra vertical en la
+   pantalla con margin:auto. Los espacios usan clamp() para crecer y
+   encogerse con el alto de la pantalla en vez de ser fijos. Si la
+   pantalla es muy baja, el grupo no se corta: la pantalla hace scroll. */
+.nombre-grupo{
+  width:100%;
+  margin:auto 0;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
 }
+
+.badge{display:block;width:170px;height:auto;margin:0 auto;}
+
+.nombre-titulo{
+  /* margin: 60px 0 0; */
+  margin: clamp(24px, 7vh, 60px) 0 0;
+  font-family: var(--titulo);
+  font-size: 46px;
+  line-height: 1.1;
+  text-align: center;
+  letter-spacing: .01em;
+}
+
 .nombre-codi{
   display:block;
   width:auto;
   max-height:min(30vh,240px);
-  margin:auto 0;
-  padding:16px 0;
+  /* margin:55px 0; */
+  margin:clamp(20px, 6.5vh, 55px) 0;
 }
+
 .nombre-form{
   width:100%;
   display:flex;
   flex-direction:column;
   align-items:center;
-  gap:14px;
 }
+
 .nombre-label{
-  font-weight:500;
   font-size:15px;
   text-align:center;
+  margin-bottom: 8px;
 }
+
 .nombre-input{
   width:100%;
-  max-width:320px;
-  padding:15px 20px;
+  max-width:270px;
+  padding:8px 20px;
+  margin-bottom: 8px;
   border-radius:999px;
   border:2px solid transparent;
   background:#fff;
@@ -188,28 +210,29 @@ strong{font-weight:700;}
   font-weight:600;
   font-size:16px; /* 16px evita el zoom automático de iOS */
   text-align:center;
-  box-shadow:0 8px 22px rgba(0,0,0,.18);
 }
+
 .nombre-input::placeholder{color:#9a9a9a;font-weight:500;}
+
 .nombre-input:focus{outline:none;border-color:var(--pildora);}
+
 .nombre-error{
   min-height:18px;
   margin:-4px 0 0;
-  font-weight:600;
-  font-size:12.5px;
+  font-size:10px;
   color:#fff;
 }
 
 /* ============ Pantalla 2: bienvenida ============ */
 .inicio-saludo{
-  margin:34px 0 0;
+  margin:34px 0;
   font-family:var(--titulo);
-  font-weight:700;
   font-size:52px;
   line-height:.95;
   text-align:center;
   overflow-wrap:anywhere;
 }
+
 .inicio-texto{
   margin:16px 0 0;
   max-width:300px;
@@ -217,7 +240,9 @@ strong{font-weight:700;}
   font-size:14px;
   line-height:1.55;
 }
+
 .inicio-texto strong{font-weight:700;}
+
 .inicio-codi{
   display:block;
   width:auto;
@@ -225,32 +250,34 @@ strong{font-weight:700;}
   margin:auto 0;
   padding:16px 0;
 }
+
 .inicio-nota{
-  margin:0 0 14px;
-  font-weight:500;
+  margin: 8px 0;
   font-size:12.5px;
   opacity:.9;
 }
 
 /* ============ Pantalla 3: preguntas ============ */
 .pantalla--pregunta{padding-bottom:0;}
+
 .progreso{
   position:relative;
   width:88%;
   max-width:330px;
-  margin-top:22px;
+  margin-top:5px;
   display:flex;
   align-items:center;
   flex-shrink:0;
 }
+
 .progreso-carril{
   width:100%;
   height:22px;
   padding:4px;
   border-radius:999px;
   background:#fff;
-  box-shadow:0 6px 16px rgba(0,0,0,.18);
 }
+
 .progreso-barra{
   height:100%;
   min-width:14px;
@@ -258,6 +285,7 @@ strong{font-weight:700;}
   background:linear-gradient(90deg,var(--verde-1) 0%,var(--verde-2) 100%);
   transition:width .35s ease;
 }
+
 .progreso-medalla{
   position:absolute;
   right:-4px;
@@ -268,8 +296,8 @@ strong{font-weight:700;}
   display:flex;align-items:center;justify-content:center;
   background:linear-gradient(160deg,#FF8A3D 0%,var(--naranja-medalla) 100%);
   border:3px solid #fff;
-  box-shadow:0 6px 16px rgba(0,0,0,.2);
 }
+
 .progreso-medalla span{
   width:24px;height:24px;
   background:#fff;
@@ -279,20 +307,32 @@ strong{font-weight:700;}
   -webkit-mask:url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyBpZD0iQ2FwYV8yIiBkYXRhLW5hbWU9IkNhcGEgMiIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB2aWV3Qm94PSIwIDAgNTEyIDUxMiI+CiAgPGRlZnM+CiAgICA8c3R5bGU+CiAgICAgIC5jbHMtMSB7CiAgICAgICAgZmlsbDogI2ZmZjsKICAgICAgfQogICAgPC9zdHlsZT4KICA8L2RlZnM+CiAgPGcgaWQ9IkNhcGFfMS0yIiBkYXRhLW5hbWU9IkNhcGEgMSI+CiAgICA8cGF0aCBjbGFzcz0iY2xzLTEiIGQ9Ik0yNTYsMjZjLTg0LjUsMC0xNTMsNjguNS0xNTMsMTUzczY4LjUsMTUzLDE1MywxNTMsMTUzLTY4LjUsMTUzLTE1M1MzNDAuNSwyNiwyNTYsMjZaTTI1Niw4NmwyMi43LDQ2LDUwLjgsNy40LTM2LjcsMzUuOCw4LjcsNTAuNi00NS41LTIzLjktNDUuNSwyMy45LDguNy01MC42LTM2LjctMzUuOCw1MC44LTcuNCwyMi43LTQ2WiIvPgogICAgPHBhdGggY2xhc3M9ImNscy0xIiBkPSJNMTgwLjMsMzQwLjZsLTQ5LjcsMTQ1LjVjLTMuNiwxMC41LDcuNiwxOS45LDE3LjIsMTQuNGw1OC44LTMzLjUsMjkuOCwzNC42YzYuNCw3LjQsMTguNSw0LjYsMjAuOS00LjlsMzAuNC0xMTkuNmMtMTMuOCwzLjQtMjguMiw1LjItNDMuMSw1LjItMjIuNCwwLTQzLjgtNC02My42LTExLjRsLS43LTMwLjNaIi8+CiAgICA8cGF0aCBjbGFzcz0iY2xzLTEiIGQ9Ik0zMzEuNywzNDAuNmwtLjcsMzAuM2MtOC44LDMuMy0xNy45LDYtMjcuMyw3LjlsMzAuNCwxMTkuNmMyLjQsOS41LDE0LjUsMTIuMywyMC45LDQuOWwyOS44LTM0LjYsNTguOCwzMy41YzkuNiw1LjUsMjAuOC0zLjksMTcuMi0xNC40bC00OS43LTE0NS41Yy0xOS44LDcuNC00MS4yLDExLjQtNjMuNiwxMS40LTUuMywwLTEwLjUtLjItMTUuNy0uN1oiLz4KICA8L2c+Cjwvc3ZnPgo=') no-repeat center / contain;
   mask:url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyBpZD0iQ2FwYV8yIiBkYXRhLW5hbWU9IkNhcGEgMiIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB2aWV3Qm94PSIwIDAgNTEyIDUxMiI+CiAgPGRlZnM+CiAgICA8c3R5bGU+CiAgICAgIC5jbHMtMSB7CiAgICAgICAgZmlsbDogI2ZmZjsKICAgICAgfQogICAgPC9zdHlsZT4KICA8L2RlZnM+CiAgPGcgaWQ9IkNhcGFfMS0yIiBkYXRhLW5hbWU9IkNhcGEgMSI+CiAgICA8cGF0aCBjbGFzcz0iY2xzLTEiIGQ9Ik0yNTYsMjZjLTg0LjUsMC0xNTMsNjguNS0xNTMsMTUzczY4LjUsMTUzLDE1MywxNTMsMTUzLTY4LjUsMTUzLTE1M1MzNDAuNSwyNiwyNTYsMjZaTTI1Niw4NmwyMi43LDQ2LDUwLjgsNy40LTM2LjcsMzUuOCw4LjcsNTAuNi00NS41LTIzLjktNDUuNSwyMy45LDguNy01MC42LTM2LjctMzUuOCw1MC44LTcuNCwyMi43LTQ2WiIvPgogICAgPHBhdGggY2xhc3M9ImNscy0xIiBkPSJNMTgwLjMsMzQwLjZsLTQ5LjcsMTQ1LjVjLTMuNiwxMC41LDcuNiwxOS45LDE3LjIsMTQuNGw1OC44LTMzLjUsMjkuOCwzNC42YzYuNCw3LjQsMTguNSw0LjYsMjAuOS00LjlsMzAuNC0xMTkuNmMtMTMuOCwzLjQtMjguMiw1LjItNDMuMSw1LjItMjIuNCwwLTQzLjgtNC02My42LTExLjRsLS43LTMwLjNaIi8+CiAgICA8cGF0aCBjbGFzcz0iY2xzLTEiIGQ9Ik0zMzEuNywzNDAuNmwtLjcsMzAuM2MtOC44LDMuMy0xNy45LDYtMjcuMyw3LjlsMzAuNCwxMTkuNmMyLjQsOS41LDE0LjUsMTIuMywyMC45LDQuOWwyOS44LTM0LjYsNTguOCwzMy41YzkuNiw1LjUsMjAuOC0zLjksMTcuMi0xNC40bC00OS43LTE0NS41Yy0xOS44LDcuNC00MS4yLDExLjQtNjMuNiwxMS40LTUuMywwLTEwLjUtLjItMTUuNy0uN1oiLz4KICA8L2c+Cjwvc3ZnPgo=') no-repeat center / contain;
 }
+
 .pregunta-contador{
-  margin:12px 0 0;
-  font-weight:600;
+  margin:50px 0 0;
   font-size:12.5px;
   letter-spacing:.02em;
 }
+
+/* Ocupa todo el espacio libre entre la barra de progreso y la hoja, y
+   centra a Codi en ese espacio. */
+.pregunta-escena{
+  flex:1 1 auto;
+  min-height:0;
+  width:100%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:16px 0;
+}
+
 .pregunta-codi{
   display:block;
   width:auto;
   max-height:min(30vh,250px);
-  margin:auto 0 -4px;
-  padding-top:14px;
-  position:relative;
-  z-index:1;
+  /* margin:auto 0 -4px;
+  padding-top:14px; */
+  margin:0;
 }
 
 /* Hoja blanca a sangre con la pregunta, como las misiones de Academy. */
@@ -340,7 +380,7 @@ strong{font-weight:700;}
   gap:12px;
 }
 .btn-respuesta{
-  padding:18px 10px;
+  padding:10px 10px 16px;
   border-radius:18px;
   border:2px solid var(--suave-borde);
   background:var(--suave);
@@ -524,7 +564,9 @@ strong{font-weight:700;}
   .analizando-pulso path{animation:none;stroke-dashoffset:0;}
 }
 @media (max-height:640px){
-  .nombre-titulo{font-size:40px;margin-top:18px;}
+  /* .nombre-titulo{font-size:40px;margin-top:18px;} */
+  .nombre-titulo{font-size:40px;margin-top:20px;}
+  .nombre-codi{max-height:min(26vh,200px);margin:18px 0;}
   .inicio-saludo{font-size:44px;margin-top:22px;}
   .pregunta-codi{max-height:150px;}
 }

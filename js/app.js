@@ -36,7 +36,8 @@ function mostrar(html) {
 /* ---- Pantalla 1: nombre ---- */
 function pantallaNombre() {
   mostrar(`
-    <section class="pantalla">
+    <section class="pantalla pantalla--nombre">
+      <div class="nombre-grupo">
       <img class="badge" src="${IMG.logo}" alt="Dropi">
       <h1 class="nombre-titulo">Diagnóstico<br>de tu operación</h1>
       <img class="nombre-codi" src="${IMG.codiNombre}" alt="">
@@ -47,6 +48,7 @@ function pantallaNombre() {
         <p class="nombre-error" id="nombre-error" role="alert"></p>
         <button class="btn-pildora" type="submit">Continuar</button>
       </form>
+      </div>
     </section>`);
 
   const form = app.querySelector('form');
@@ -114,16 +116,18 @@ function pantallaPregunta() {
         </button>
       </div>
 
+      <p class="pregunta-contador">Pregunta ${i + 1} de ${total}</p>
       <div class="progreso">
         <div class="progreso-carril" role="progressbar" aria-label="Avance del diagnóstico"
           aria-valuemin="0" aria-valuemax="${total}" aria-valuenow="${i}">
           <div class="progreso-barra" id="barra" style="width:${avance}%"></div>
         </div>
         <span class="progreso-medalla" aria-hidden="true"><span></span></span>
-      </div>
-      <p class="pregunta-contador">Pregunta ${i + 1} de ${total}</p>
+      </div>      
 
-      <img class="pregunta-codi" src="${IMG.codiPregunta}" alt="">
+      <div class="pregunta-escena">
+        <img class="pregunta-codi" src="${IMG.codiPregunta}" alt="">
+      </div>
 
       <div class="hoja hoja-pregunta">
         <div class="anima-entrada">

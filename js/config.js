@@ -3,7 +3,7 @@
 
    - VERTICALES: cada vertical de Dropi con su isotipo y los dos
      textos que aparecen en la receta si le hace falta a la persona.
-   - PREGUNTAS: las 10 preguntas en orden. Responder "No" significa
+   - PREGUNTAS: las 12 preguntas en orden. Responder "No" significa
      que a esa persona le hace falta la vertical de la pregunta.
      Una vertical puede tener varias preguntas: basta con un "No"
      para que aparezca en la receta (una sola vez).
